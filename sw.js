@@ -1,6 +1,6 @@
 // create a fake DOM environment
 // in order to generate HTML pages right here!
-importScripts('./js/basichtml.js');
+importScripts('js/basichtml.js');
 
 // use basicHTML to create a new document for this site/page
 const {Document, HTMLElement} = basicHTML;
@@ -18,7 +18,7 @@ self.HTMLElement = HTMLElement;
 
 // anyway, once a document is made available
 // we can finally import hyperHTML too
-importScripts('./js/hyperhtml.js');
+importScripts('js/hyperhtml.js');
 const {bind} = hyperHTML;
 // the same library, for this example,
 // is used on the client side too!
@@ -54,7 +54,7 @@ const indexPage = new Response(
     <meta name="theme-color" content="#ffffff" />
     <link rel=manifest href=${files[0]} />
     <link rel=stylesheet href=${files[1]} />
-    <script defer src=/js/hyperhtml.js></script>
+    <script defer src=js/hyperhtml.js></script>
     <script defer src=${files[2]}></script>
   </head>
   <body>

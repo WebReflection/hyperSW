@@ -4,11 +4,14 @@
     <title>temporary index</title>
     <meta name="viewport" content="width=device-width">
     <meta name="theme-color" content="#ffffff">
-    <link rel="manifest" href="/manifest.json">
+    <link rel="manifest" href="manifest.json">
     <script>
     (SW => {
-      SW.register('/sw.js')
-        .then(() => location.href = '/');
+      SW.register('sw.js')
+        .then(() =>
+          // redirect to the same, SW ready page
+          location.href = location.pathname
+        );
     })(navigator.serviceWorker);
     </script>
   </head>
