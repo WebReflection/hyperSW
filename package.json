@@ -1,0 +1,24 @@
+{
+  "name": "hypersw",
+  "version": "0.0.0",
+  "description": "hyperHTML does Service Worker too",
+  "scripts": {
+    "basic": "node -e 'var fs=require(\"fs\");fs.writeFileSync(\"js/basichtml.js\",fs.readFileSync(require.resolve(\"basichtml/web.js\")))'",
+    "hyper": "node -e 'var fs=require(\"fs\");fs.writeFileSync(\"js/hyperhtml.js\",fs.readFileSync(require.resolve(\"hyperhtml/min.js\")))'",
+    "build": "npm run basic && npm run hyper"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/WebReflection/hyperSW.git"
+  },
+  "author": "Andrea Giammarchi",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/WebReflection/hyperSW/issues"
+  },
+  "homepage": "https://github.com/WebReflection/hyperSW#readme",
+  "devDependencies": {
+    "basichtml": "^0.8.1",
+    "hyperhtml": "^1.0.2"
+  }
+}

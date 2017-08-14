@@ -1,0 +1,13 @@
+html {
+  background-color: #9F9;
+  font-family:  -apple-system,
+                BlinkMacSystemFont,
+                "Segoe UI",
+                Roboto,
+                "Helvetica Neue",
+                Arial, sans-serif;
+}
+
+h1, main {
+  text-align: center;
+}

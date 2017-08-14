@@ -1,0 +1,18 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <title>temporary index</title>
+    <meta name="viewport" content="width=device-width">
+    <meta name="theme-color" content="#ffffff">
+    <link rel="manifest" href="/manifest.json">
+    <script>
+    (SW => {
+      SW.register('/sw.js')
+        .then(() => location.href = '/');
+    })(navigator.serviceWorker);
+    </script>
+  </head>
+  <body>
+    Loading (or splash screen) ...
+  </body>
+</html>
