@@ -37,12 +37,37 @@ const any = $ => new Promise((D, E, A, L) => {
 // here the files we need for
 // the whole offline experience
 const files = [
-  '/manifest.json',
-  '/css/main.css',
-  '/js/main.js',
-  '/js/hyperhtml.js',
-  '/'
+  'manifest.json',
+  'css/main.css',
+  'js/main.js',
+  'js/hyperhtml.js'
 ];
+
+// our main offline /index.html page
+// it returns basicHTML document as string,
+// manipulated through hyperHTML
+const indexPage = new Response(
+  (bind(document.documentElement)
+  `<head>
+    <title>${'hyperHTML does SW'}</title>
+    <meta name=viewport content="width=device-width" />
+    <meta name="theme-color" content="#ffffff" />
+    <link rel=manifest href=${files[0]} />
+    <link rel=stylesheet href=${files[1]} />
+    <script defer src=/js/hyperhtml.js></script>
+    <script defer src=${files[2]}></script>
+  </head>
+  <body>
+    <h1>${'🍾 Offline hyperHTML 🎉'}</h1>
+    <main></main>
+  </body>`
+  ).parentNode.toString(),
+  {
+    headers: {
+      'Content-Type': 'text/html;charset=utf-8'
+    }
+  }
+);
 
 // And here all offline pages,
 // defined just once in this example,
@@ -53,31 +78,10 @@ const views = {
   // in case we need to provide one
   404: new Response('Not found', {status: 404}),
 
-  // our main offline /index.html page
-  // it returns basicHTML document as string,
-  // manipulated through hyperHTML
-  '/': new Response(
-    (bind(document.documentElement)
-    `<head>
-      <title>${'hyperHTML does SW'}</title>
-      <meta name=viewport content="width=device-width" />
-      <meta name="theme-color" content="#ffffff" />
-      <link rel=manifest href=${files[0]} />
-      <link rel=stylesheet href=${files[1]} />
-      <script defer src=/js/hyperhtml.js></script>
-      <script defer src=${files[2]}></script>
-    </head>
-    <body>
-      <h1>${'🍾 Offline hyperHTML 🎉'}</h1>
-      <main></main>
-    </body>`
-    ).parentNode.toString(),
-    {
-      headers: {
-        'Content-Type': 'text/html;charset=utf-8'
-      }
-    }
-  )
+  // either via github
+  '/hyperSW/': indexPage,
+  // or directly
+  '/': indexPage
 };
 
 // on install, cache all the needed files
