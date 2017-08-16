@@ -43,6 +43,22 @@ const files = [
   'js/hyperhtml.js'
 ];
 
+console.log((bind((new Document).documentElement)
+`<head>
+  <title>${'hyperHTML does SW'}</title>
+  <meta name=viewport content="width=device-width">
+  <meta name="theme-color" content="#ffffff">
+  <link rel=manifest href=${files[0]}>
+  <link rel=stylesheet href=${files[1]}>
+  <script defer src=js/hyperhtml.js></script>
+  <script defer src=${files[2]}></script>
+</head>
+<body>
+  <h1>${'🍾 Offline hyperHTML 🎉'}</h1>
+  <main></main>
+</body>`
+).parentNode.toString());
+
 // our main offline /index.html page
 // it returns basicHTML document as string,
 // manipulated through hyperHTML
@@ -50,10 +66,10 @@ const indexPage = new Response(
   (bind(document.documentElement)
   `<head>
     <title>${'hyperHTML does SW'}</title>
-    <meta name=viewport content="width=device-width" />
-    <meta name="theme-color" content="#ffffff" />
-    <link rel=manifest href=${files[0]} />
-    <link rel=stylesheet href=${files[1]} />
+    <meta name=viewport content="width=device-width">
+    <meta name="theme-color" content="#ffffff">
+    <link rel=manifest href=${files[0]}>
+    <link rel=stylesheet href=${files[1]}>
     <script defer src=js/hyperhtml.js></script>
     <script defer src=${files[2]}></script>
   </head>
